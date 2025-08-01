@@ -1,123 +1,91 @@
-🎶 SQL Agent Ollama: Talk to Your Database with LLMs! 🤖
-Welcome to SQL Agent Ollama — your AI-powered data companion!
-This project lets you interact with your database using natural language. Whether you're a data analyst, developer, or just curious, you can skip writing SQL and let cutting-edge Large Language Models (LLMs) do the work for you.
+# 🎶 SQL Agent Ollama: Talk to Your Database with LLMs! 🤖
 
-Powered by Ollama, LangChain, and the Chinook music database — this tool turns simple English into real SQL queries and answers.
+Welcome to **SQL Agent Ollama** — your AI-powered data explorer!  
+Ask questions in plain English and let state-of-the-art language models (`llama3.1`, `cogito`, `llama3`) do the SQL heavy lifting on the classic Chinook music database.
 
-🚀 What is SQL Agent Ollama?
-This project demonstrates how to:
+---
 
-🔌 Connect to a local SQLite database (Chinook.db)
+## 🚀 What is This?
 
-🧠 Leverage LangChain’s SQL Agent with Ollama-hosted LLMs
+This notebook is a hands-on demo of how you can:
+- Connect to a SQLite database (`Chinook.db`)
+- Use LangChain’s SQL agent toolkit
+- Harness the power of multiple Ollama LLMs
+- Query your data with natural language — no SQL expertise needed!
 
-💬 Query data by typing plain English, no SQL knowledge required
+---
 
-You can interactively explore a real-world music database using models like:
+## 🛠️ Requirements
 
-llama3.1
+- Python 3.8+
+- [langchain-community](https://pypi.org/project/langchain-community/)
+- [langchain-ollama](https://pypi.org/project/langchain-ollama/)
+- [Ollama](https://ollama.com/) (with `llama3.1`, `cogito`, and `llama3` models)
+- `Chinook.db` SQLite database file in your project directory
 
-cogito
+---
 
-llama3
+## ⚡ Setup
 
-It’s perfect for learning, prototyping, or just having fun with AI-powered data queries.
+1. **Install dependencies:**
+    ```sh
+    pip install langchain-community langchain-ollama
+    ```
 
-🛠️ Prerequisites
-Before you begin, make sure you have the following installed:
+2. **Start Ollama and pull the models:**
+    ```sh
+    ollama run llama3.1
+    ollama run cogito
+    ollama run llama3
+    ```
 
-Python 3.8 or later
+3. **Download the Chinook database:**  
+   [Get it here](https://github.com/lerocha/chinook-database) and place `Chinook.db` in your project folder.
 
-langchain-community
+---
 
-langchain-ollama
+## 📝 How to Use
 
-Ollama with required models
+Open the [`SQL AGENT OLLAMA.ipynb`](c:\Users\ruchita.maaran\Downloads\SQL%20AGENT%20OLLAMA.ipynb) notebook and run the cells step by step.
 
-The Chinook.db SQLite database (see below)
+- **Connect to the database and preview tables**
+- **Create a SQL agent with your favorite LLM:**
+    ```python
+    from langchain_ollama.llms import OllamaLLM
+    llm = OllamaLLM(model="llama3.1")  # or "cogito", or "llama3"
+    ```
+- **Ask your questions in English!**  
+  The agent will translate them into SQL, run the queries, and show you the answers.
 
-⚙️ Setup Instructions
-1. Install the required Python packages:
-sh
-Copy
-Edit
-pip install langchain-community langchain-ollama
-2. Start Ollama and pull the models:
-Make sure Ollama is installed and running, then execute:
+---
 
-sh
-Copy
-Edit
-ollama run llama3.1
-ollama run cogito
-ollama run llama3
-ℹ️ These commands will download and spin up each model. You can experiment with each to compare their performance.
+## 💡 Example Questions
 
-3. Get the Chinook Database:
-Download the database from the Chinook GitHub repository and place the Chinook.db file in your project directory.
+- List the total sales per country. Which country's customers spent the most?
+- Describe the playlisttrack table.
+- List all artists.
+- How many albums does Alice in Chains have?
+- Find all albums for the artist 'AC/DC'.
+- List all tracks in the 'Rock' genre.
+- Find the total duration of all tracks.
+- How many tracks are there in the album with ID 5?
+- Find the total number of invoices.
+- Who are the top 5 customers by total purchase?
+- Which albums are from the year 2000?
+- How many employees are there?
 
-🧪 How to Use the Notebook
-Open the Jupyter Notebook file:
-📄 SQL AGENT OLLAMA.ipynb
+---
 
-(Path shown in the original: c:\Users\ruchita.maaran\Downloads\SQL%20AGENT%20OLLAMA.ipynb — make sure the file is accessible from your working directory)
+## 🌟 Why Use Multiple Models?
 
-Then, follow these steps:
+Each LLM (`llama3.1`, `cogito`, `llama3`) brings its own strengths.  
+Try them all and see which one gives you the best results for your queries!
 
-Load the database and inspect its structure
+---
 
-Choose an LLM and initialize the SQL agent
-Example:
+## 📜 License
 
-python
-Copy
-Edit
-from langchain_ollama.llms import OllamaLLM
-llm = OllamaLLM(model="llama3.1")  # or "cogito", or "llama3"
-Ask your questions in English
-The agent will convert them to SQL queries and show the results instantly.
+MIT
+---
 
-💬 Sample Questions You Can Ask
-Here are some example queries to try out:
-
-“List the total sales per country. Which country’s customers spent the most?”
-
-“Describe the playlisttrack table.”
-
-“List all artists.”
-
-“How many albums does Alice in Chains have?”
-
-“Find all albums for the artist AC/DC.”
-
-“List all tracks in the ‘Rock’ genre.”
-
-“What is the total duration of all tracks?”
-
-“How many tracks are there in the album with ID 5?”
-
-“Find the total number of invoices.”
-
-“Who are the top 5 customers by total purchase?”
-
-“Which albums were released in the year 2000?”
-
-“How many employees are there?”
-
-Feel free to explore further — the database is rich with data!
-
-🌐 Why Multiple Models?
-Each LLM has unique capabilities:
-
-Model	Strengths
-llama3.1	Fast and general-purpose, great for SQL conversion
-cogito	May offer more nuanced understanding of edge cases
-llama3	Smaller and faster, useful for lightweight tasks
-
-🔍 Try asking the same question to different models and compare the outputs!
-
-📜 License
-This project is licensed under the MIT License — feel free to modify, use, or extend it however you like.
-
-✅ Ready to Chat with Your Database?
-Start the notebook and talk to your data today — no SQL required! 🎧📊
+**Ready to chat with your database? Fire up the
