@@ -88,4 +88,4 @@ Try them all and see which one gives you the best results for your queries!
 MIT
 ---
 
-**Ready to chat with your database? Fire up the
+**Ready to chat with your database? Fire up the notebook and start exploring!**
